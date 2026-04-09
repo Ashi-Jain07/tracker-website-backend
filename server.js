@@ -46,10 +46,11 @@ const connectDB = async () => {
   }
 };
 
+await connectDB();
+
 // middleware to ensure DB connects
 app.use(async (req, res, next) => {
   req.io = io;
-  await connectDB();
   next();
 });
 
