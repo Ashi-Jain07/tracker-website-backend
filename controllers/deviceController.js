@@ -178,7 +178,10 @@ export const getUserDevices = async (req, res) => {
       .select("-apiKey -__v");
 
     if (devices.length === 0) {
-      return res.status(404).json({ message: "No devices found" });
+      return res.status(200).json({
+        count: 0,
+        devices: []
+      });
     }
 
     res.status(200).json({
@@ -205,7 +208,10 @@ export const getUserDevicesForAdmin = async (req, res) => {
       .select("-apiKey -__v");
 
     if (devices.length === 0) {
-      return res.status(404).json({ message: "No devices found for this user" });
+      return res.status(200).json({
+        count: 0,
+        devices: []
+      });
     }
 
     res.status(200).json({
